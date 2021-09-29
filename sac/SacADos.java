@@ -10,9 +10,8 @@ public class SacADos {
     private boolean vide;
     private String chemin;
     private  float poidsMaximal = 30;
-    private String[] listeObjets;
     ArrayList<Objet> objpresent;
-
+    ArrayList<Objet> listeObjets;
 
     private double poids;
     //Constructeur générant un sac vide
