@@ -1,22 +1,22 @@
 package objet;
 
 import java.util.Comparator;
+import java.lang.String;
 
 public class Objet {
 
     private boolean estALinterieur;
     private String chemin;
     private String nom;
-    private double poids;
-    private double prix;
-    private double rapport;
+    private float poids;
+    private float prix;
+    private float rapport;
 
     //Constructeur d'Objet
-    public Objet(String nom, double poids, double prix){
+    public Objet(String nom, float poids, float prix){
         this.nom=nom;
         this.poids=poids;
         this.prix=prix;
-        this.rapport=prix/poids;
     }
 
 
@@ -45,9 +45,7 @@ public class Objet {
         return true;
     }
 
-    public static Comparator <Objet> rapport() {
-        return ((o1, o2) -> Double.compare(o2.getRapport(),o1.getRapport()));
+    public void Rapport(){
+        this.rapport=this.prix/this.poids;
     }
-}
-
 }
