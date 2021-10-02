@@ -1,19 +1,22 @@
 package sac;
 
+import methode.Glouton;
+import methode.Methode;
 import objet.Objet;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.lang.String;
 public class SacADos {
     private boolean vide;
     private String chemin;
-    private  float poidsMaximal = 30;
-    ArrayList<Objet> objpresent;
+    private float poidsMaximal = 30;
+    private float poids;
+    private float prixTotal;
+    ArrayList<Objet> objDansLeSac;
     ArrayList<Objet> listeObjets;
 
-    private double poids;
     //Constructeur générant un sac vide
     public SacADos() {
 
@@ -23,22 +26,39 @@ public class SacADos {
     public SacADos(String chemin, float poidsMaximal) {
         this.chemin = chemin;
         this.poidsMaximal = poidsMaximal;
+        this.listeObjets=new ArrayList<Objet>();
+        this.objDansLeSac=new ArrayList<Objet>();
 
+        try {
+            Scanner sc = new Scanner(new File(chemin));
+            while (sc.hasNext()) {
+                String ligne = sc.nextLine();
+                String[] tabSplit = ligne.split(";"); //O
+                this.listeObjets.add(new Objet(tabSplit[0],Float.parseFloat(tabSplit[1]),Float.parseFloat(tabSplit[2])));
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void résoudre() {
+    public void resoudre() {
+
+        Glouton glouton = new Glouton();
+        glouton.resoudre(this);
+        }
 
 
-    }
+
 
 
 
 
 
     // compter nos objets
-    public ArrayList<Objet> listeObjetFichier(String chemin) throws FileNotFoundException {
-        listeObjets=new ArrayList<>(listeObjets);
+        /*public ArrayList<Objet> listeObjetFichier(String chemin) throws FileNotFoundException {
+
         Scanner sc = new Scanner(new File(chemin));
         while (sc.hasNext()) {
             String ligne = sc.nextLine();
@@ -52,13 +72,12 @@ public class SacADos {
             listeObjets.add(objet);
         }
         return listeObjets;
-    }
+    }*/
     public void add(Objet objet){
 
-        if(objet.getPoids() + this.poids <= this.poidsMaximal){
-            this.objpresent.add(objet);
+            this.objDansLeSac.add(objet);
             this.poids += objet.getPoids();
-        }
+            this.prixTotal += objet.getPrix();
     }
     @Override
     public String toString() {
@@ -84,12 +103,15 @@ public class SacADos {
     }
 
     public ArrayList<Objet> getList() {
-        return listeObjets;
+        return this.listeObjets;
     }
-    public  float getPoidsMaximal() {
-        return poidsMaximal;
+    public float getPoidsMaximal() {
+        return this.poidsMaximal;
     }
-    public double getPoids() {
-        return poids;
+    public float getPoids() {
+        return this.poids;
+    }
+    public float getPrixTotal(){
+        return this.prixTotal;
     }
 }
