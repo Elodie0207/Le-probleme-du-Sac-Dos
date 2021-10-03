@@ -1,7 +1,6 @@
 package sac;
 
 import methode.Glouton;
-import methode.Methode;
 import objet.Objet;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +14,7 @@ public class SacADos {
     private float poids;
     private float prixTotal;
     ArrayList<Objet> objDansLeSac;
-    ArrayList<Objet> listeObjets;
+    static ArrayList<Objet> listeObjets;
 
     //Constructeur générant un sac vide
     public SacADos() {
@@ -47,7 +46,7 @@ public class SacADos {
 
         Glouton glouton = new Glouton();
         glouton.resoudre(this);
-        }
+    }
 
 
 
@@ -58,16 +57,13 @@ public class SacADos {
 
     // compter nos objets
         /*public ArrayList<Objet> listeObjetFichier(String chemin) throws FileNotFoundException {
-
         Scanner sc = new Scanner(new File(chemin));
         while (sc.hasNext()) {
             String ligne = sc.nextLine();
             String[] tabSplit = ligne.split(";");
-
             String objetsNom = tabSplit[0];
             float objetsPoids = Float.parseFloat(tabSplit[1]);
             float objetsPrix = Float.parseFloat(tabSplit[2]);
-
             Objet objet = new Objet(objetsNom, objetsPoids, objetsPrix);
             listeObjets.add(objet);
         }
@@ -75,31 +71,37 @@ public class SacADos {
     }*/
     public void add(Objet objet){
 
-            this.objDansLeSac.add(objet);
-            this.poids += objet.getPoids();
-            this.prixTotal += objet.getPrix();
+        this.objDansLeSac.add(objet);
+        this.poids += objet.getPoids();
+        this.prixTotal += objet.getPrix();
     }
-    @Override
+
     public String toString() {
-        //StringBuilder sb = new StringBuilder();
-                //sb.append("Sac à dos\n");
-                //sb.append("-Valeur totale: ")
-                        //.append(getPrix)
-                        //.append("\n");
-                //sb.append("-Poids total: ")
-                        //.append(this.poids)
-                        //.append(" (")
-                        //.append(String.format("%,.2f", 100 * this.poids / this.poidsMaximal))
-                       // .append("%)\n");
-               // sb.append("-Poids Maximal: ")
-            //            .append(this.poidsMaximal)
-                       // .append("\n");
-             //   sb.append("-Objets:\n");
-              //  for (Objet objet : this.listeObjets) {
-              //      sb.append("  >").append(objet).append("\n");
-             //   }
-               // return sb.toString();
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Sac à dos\n");
+        sb.append("-Valeur totale: ")
+        .append(prixTotal)
+        .append("\n");
+        sb.append("-Poids total: ")
+        .append(poids)
+        .append(" (")
+        .append(String.format("%,.2f", 100 * poids / poidsMaximal))
+         .append("%)\n");
+         sb.append("-Poids Maximal: ")
+        .append(poidsMaximal)
+         .append("\n");
+         sb.append("-Objets:\n");
+          for (Objet objet : listeObjets) {
+             sb.append("  >").append(objet).append("\n");
+           }
+
+        sb.append("-Objets dans le sac:\n");
+        for (Objet objet : objDansLeSac) {
+            sb.append("  >").append(objet.getNom()).append("\n");
+        }
+
+         return sb.toString();
+
     }
 
     public ArrayList<Objet> getList() {
