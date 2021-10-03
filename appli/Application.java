@@ -4,12 +4,13 @@ import objet.Objet;
 import sac.SacADos;
 
 public class Application {
-    
+
     public static void main(String[] args){
         SacADos sacADos = null;
-        String chemin = "scr/appli/items.txt";
-            sacADos = new SacADos(chemin,sacADos.getPoidsMaximal());
-    sacADos.resoudre();
+        String chemin = "C:\\Users\\RAMIREZ\\IdeaProjects\\Projet_AAV\\src\\appli\\items.txt";
+        sacADos = new SacADos(chemin, 10);
+        sacADos.resoudre();
+        System.out.println(sacADos.toString());
 
     }
 }
