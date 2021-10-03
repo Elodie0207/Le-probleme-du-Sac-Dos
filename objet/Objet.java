@@ -17,6 +17,7 @@ public class Objet {
         this.nom=nom;
         this.poids=poids;
         this.prix=prix;
+        this.rapport=this.prix/this.poids;
     }
 
 
