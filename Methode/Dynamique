@@ -14,7 +14,7 @@ public class Dynamique {
         //on définit listeobjets et PoidsMax pour après crée une matrice
         int NvPoidsMax= (int)(sac.getPoidsMaximal()*Math.pow(10.0,0)); //Précision pour pouvoir stocker en tant que int (conversion de float vers int)
         ArrayList<Objet> listeobjets = sac.getList();
-       //on crée la matrice de taille listeobjets* PoidsMax
+        //on crée la matrice de taille listeobjets* PoidsMax
         float[][] M= new float[listeobjets.size()][NvPoidsMax+1];
 
         //on rempli la matrice
@@ -32,14 +32,33 @@ public class Dynamique {
 
         for(int j=1;j< listeobjets.size();j++){
             for (int i =0; i<=NvPoidsMax;i++){
-             if(listeobjets.get(j).getPoids()*Math.pow(10.0,0)<=i){
-                 M[j][i] = Math.max (M[j-1][i]), (M[j-1][(int)((i-(listeobjets.get(i).getPoids()*Math.pow(10.0,0)]+listeobjets.get(j).getPrix()));
-             }
+                if(listeobjets.get(j).getPoids()*Math.pow(10.0,0)<=i){
+                    M[j][i] = Math.max (M[j-1][i],(float)(M[j-1][(int)((i-(listeobjets.get(i).getPoids()*Math.pow(10.0,0))))]+listeobjets.get(j).getPrix()));
+                }
+                else {
+                        M[j][i] = M[j - 1][i];
+                }
+
+                }
             }
+
+        int npm = NvPoidsMax;
+        int lo = listeobjets.size() - 1;
+
+        while (npm >= 0 && M[lo][npm] == M[lo -1][npm]){
+            npm --;
         }
 
-        
-
+        while (npm > 0){
+            while (lo > 0 && M[lo][npm] == M[lo-1][npm]){
+                lo--;
+            }
+            npm = (int)(npm - sac.getPoidsMaximal()*Math.pow(10.0,0)) ;
+            if (npm >= 0){
+                sac.add(listeobjets.get(lo));
+            }
+            lo--;
+        }
     }
-
 }
+
