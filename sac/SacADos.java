@@ -1,5 +1,6 @@
 package sac;
 
+import methode.Dynamique;
 import methode.Glouton;
 import objet.Objet;
 import java.io.File;
@@ -44,15 +45,11 @@ public class SacADos {
 
     public void resoudre() {
 
-        Glouton glouton = new Glouton();
-        glouton.resoudre(this);
+        //Glouton glouton = new Glouton();
+        //glouton.resoudre(this);
+        Dynamique dynamique = new Dynamique();
+        dynamique.resoudre(this);
     }
-
-
-
-
-
-
 
 
     // compter nos objets
