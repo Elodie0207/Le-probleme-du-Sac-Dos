@@ -13,6 +13,7 @@ import sac.SacADos;
 
 /**
  * La classe Glouton resout le problème du sac avec la méthode gloutonne
+ *
  * @author Meryem Guldas & Sébastien Ramirez
  */
 
@@ -28,7 +29,7 @@ public class Glouton{
         for (int i=0; i<listeobjets.size()-1; i++)
             listeobjets.get(i).Rapport(); //on obtient le rapport de chaque objet
         float poidsMax= sac.getPoidsMaximal();
-        Quicksort(listeobjets,0,listeobjets.size()-1); //on les trie par
+        Quicksort(listeobjets,0,listeobjets.size()-1); //on les trie
 
         for (Objet objet: listeobjets){
             if (sac.getPoids()+objet.getPoids()<=poidsMax){ //on les ajoute tant que le poids de l'objet est inférieur au poids Maximum
@@ -39,9 +40,9 @@ public class Glouton{
 
     /**
      * Algorithme de tri Rapide
-     * @param tab
-     * @param entierPr
-     * @param entierDr
+     * @param tab liste d'objet
+     * @param entierPr premier entier
+     * @param entierDr dernier entier
      */
     private void Quicksort(List<Objet> tab, int entierPr, int entierDr){
         if(entierPr<entierDr) {
@@ -54,11 +55,11 @@ public class Glouton{
 
     /**
      * Permet de répartir les objets autour du pivot
-     * @param tab
-     * @param entierPr
-     * @param entierDr
-     * @param pivot
-     * @return premier entier
+     * @param tab liste d'objet
+     * @param entierPr premier entier
+     * @param entierDr dernier entier
+     * @param pivot l'index du pivot
+     * @return pivot
      */
     private int Répartition(List<Objet> tab, int entierPr, int entierDr, int pivot){
         Echanger(tab,pivot,entierDr);
@@ -76,9 +77,9 @@ public class Glouton{
 
     /**
      * Permet d'echanger le dernier entier avec le pivot
-     * @param t
-     * @param entierDr
-     * @param pivot
+     * @param t liste d'objet
+     * @param entierDr dernier entier
+     * @param pivot l'index du pivot
      */
     public static void Echanger(List<Objet> t, int entierDr, int pivot) {
         //échange entre le pivot et le dernier du tableau (le pivot devient le dernier du tableau)
@@ -86,5 +87,4 @@ public class Glouton{
         t.set(entierDr, t.get(pivot));
         t.set(pivot,tmp);
     }
-
 }
