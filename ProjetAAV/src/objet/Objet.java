@@ -53,7 +53,7 @@ public class Objet {
 
     /**
      * Renvoie le nom de l'objet
-     * @return Nom
+     * @return String Nom
      */
     public String getNom() {
         return this.nom;
@@ -61,7 +61,7 @@ public class Objet {
 
     /**
      * Renvoie le poids de l'objet
-     * @return Poids
+     * @return float Poids
      */
     public float getPoids() {
         return this.poids;
@@ -69,7 +69,7 @@ public class Objet {
 
     /**
      * Renvoie le prix de l'objet
-     * @return Prix
+     * @return float Prix
      */
     public float getPrix() {
         return this.prix;
@@ -77,7 +77,7 @@ public class Objet {
 
     /**
      * Renvoie le rapport de l'objet (Rapport = prix/poids)
-     * @return Rapport
+     * @return double Rapport
      */
     public double getRapport(){return this.rapport;}
 
