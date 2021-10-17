@@ -99,8 +99,8 @@ public class SacADos {
     }
     public void resoudrePse() {
 
-      PSE pse = new PSE();
-      pse.resoudre(this);
+        PSE pse = new PSE();
+        pse.resoudre(this);
     }
 
 
@@ -186,8 +186,10 @@ public class SacADos {
         return this.prixTotal;
     }
 
-
-
+    /**
+     *  Renvoie une liste d'objet qui sont dans le sac à dos
+     * @return objDansLeSac
+     */
     public ArrayList<Objet> getObjDansLeSac() {
         return objDansLeSac;
     }
