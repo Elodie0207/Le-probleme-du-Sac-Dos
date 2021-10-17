@@ -6,18 +6,32 @@ import java.util.ArrayList;
 
 import sac.SacADos;
 
+/**
+ * La classe PSE est l'une des méthodes qui résout le problème du sac à dos
+ *
+ * @author Meryem Guldas & Sébastien Ramirez
+ */
 public class PSE {
     private float borneMin;
     private float borneMax;
+
+    /**
+     * Le poids maximal du sac
+     */
     private float maxPoids;
-    private Arbre resMax; //la meilleur solution
+
+    /**
+     * La meuilleur solution
+     */
+    private Arbre resMax;
+
     private Glouton glouton = new Glouton();
     ArrayList<Objet> listeobjets;
     public static int nbrec=0;
 
     /**
      * Permet de resoudre le problème du sac à dos avec la méthode PSE
-     * @param sac
+     * @param sac à résoudre
      */
     public void resoudre(SacADos sac) {
 
