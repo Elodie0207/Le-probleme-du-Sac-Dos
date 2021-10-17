@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Meryem Guldas & Sébastien Ramirez
  */
 public class Dynamique {
-int precision=10;
+    int precision=10;
     /**
      * Permet de resoudre le problème du sac avec l'algorithme dynamique
      * @param sac à résoudre
