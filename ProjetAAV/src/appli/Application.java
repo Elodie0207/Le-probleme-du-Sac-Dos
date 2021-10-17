@@ -22,17 +22,18 @@ public class Application {
             sacADos.resoudreGlouton();
 
         }
+
         else if (reponse.equals("Dynamique")){
 
             sacADos.resoudreDynamique();
 
         }
-        if (reponse.equals("PSE")){
+        else if (reponse.equals("PSE")){
 
             sacADos.resoudrePse();
 
         }
-        else {
+        else  {
             System.out.println("Mauvaise syntaxe");
             System.exit(1);
         }
